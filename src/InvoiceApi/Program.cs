@@ -19,15 +19,11 @@ builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    c.SwaggerDoc("v1", new()
     {
         Title = "Invoice API",
         Version = "v1",
-        Description = "A comprehensive REST API for managing invoices",
-        Contact = new Microsoft.OpenApi.Models.OpenApiContact
-        {
-            Name = "Invoice API Support"
-        }
+        Description = "A comprehensive REST API for managing invoices"
     });
 });
 
