@@ -27,3 +27,17 @@ invoice-api/
 ├── InvoiceApi.slnx
 ├
 
+invoice-api/
+├── Controllers/          InvoicesController.cs
+├── Data/                 InvoiceDbContext.cs
+├── DTOs/                 All 5 DTOs present
+├── Middleware/           ErrorHandlingMiddleware.cs
+├── Models/               Invoice.cs, InvoiceItem.cs
+├── Properties/           launchSettings.json
+├── Services/             IInvoiceService.cs, InvoiceService.cs
+├── InvoiceApi.csproj     PostgreSQL configured
+├── Program.cs            Full configuration
+├── appsettings.json      PostgreSQL connection string
+├── Dockerfile            For containerization
+├── fly.toml              For Fly.io deployment
+└── 
