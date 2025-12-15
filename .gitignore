@@ -54,13 +54,14 @@ artifacts/
 *.sqlite
 *.sqlite3
 
-# Environment variables
+# Environment variables and configuration
 .env
 .env.local
 appsettings.Development.json
 appsettings.Production.json
+appsettings.json
 appsettings.*.json
-!appsettings.json
+!appsettings.Example.json
 
 # OS
 .DS_Store
