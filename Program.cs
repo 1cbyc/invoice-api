@@ -9,8 +9,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Add Entity Framework with PostgreSQL
+// Support DATABASE_URL (common in Fly.io) or ConnectionStrings__DefaultConnection
+// DATABASE_URL has highest priority (cloud environments)
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+if (!string.IsNullOrEmpty(connectionString))
+{
+    // Parse DATABASE_URL format: postgres://user:password@host:port/database
+    var uri = new Uri(connectionString);
+    var username = uri.UserInfo.Split(':')[0];
+    var password = uri.UserInfo.Split(':').Length > 1 ? uri.UserInfo.Split(':')[1] : "";
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
+}
+else
+{
+    // Fall back to configuration (supports ConnectionStrings__DefaultConnection env var or appsettings.json)
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+}
+
 builder.Services.AddDbContext<InvoiceDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString ?? throw new InvalidOperationException("Connection string 'DefaultConnection' was not found.")));
 
 // Add services
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
