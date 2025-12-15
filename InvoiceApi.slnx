@@ -1,5 +1,3 @@
 <Solution>
-  <Folder Name="/src/">
-    <Project Path="src/InvoiceApi/InvoiceApi.csproj" />
-  </Folder>
+  <Project Path="InvoiceApi.csproj" />
 </Solution>
