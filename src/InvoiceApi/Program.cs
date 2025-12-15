@@ -8,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Add Entity Framework
+// Add Entity Framework with PostgreSQL
 builder.Services.AddDbContext<InvoiceDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
@@ -40,11 +40,33 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Ensure database is created
+// Apply database migrations on startup (if any exist)
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<InvoiceDbContext>();
-    dbContext.Database.EnsureCreated();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        // Check if database exists and can be migrated
+        if (dbContext.Database.GetPendingMigrations().Any())
+        {
+            logger.LogInformation("Applying database migrations...");
+            dbContext.Database.Migrate();
+            logger.LogInformation("Database migrations applied successfully.");
+        }
+        else
+        {
+            // If no migrations exist, ensure database is created
+            dbContext.Database.EnsureCreated();
+            logger.LogInformation("Database ensured created.");
+        }
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred while setting up the database.");
+        // In production, you might want to fail fast here
+        // throw;
+    }
 }
 
 // Configure the HTTP request pipeline.
