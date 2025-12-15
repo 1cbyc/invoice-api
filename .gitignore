@@ -1,5 +1,7 @@
 # PowerShell scripts
 *.ps1
+*.md
+!README.md
 
 # Build results
 [Dd]ebug/
