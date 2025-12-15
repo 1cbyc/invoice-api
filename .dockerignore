@@ -1,0 +1,16 @@
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/bin
+**/obj
+**/node_modules
+**/.idea
+*.md
+!README.md
+*.db
+*.sqlite
+*.sqlite3
+appsettings.Development.json
+appsettings.Production.json
+
