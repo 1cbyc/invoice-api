@@ -29,12 +29,7 @@ public class InvoiceDbContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
-        // Configure InvoiceItem entity
-        modelBuilder.Entity<InvoiceItem>(entity =>
-        {
-            entity.Property(e => e.LineTotal)
-                .HasComputedColumnSql("[Quantity] * [UnitPrice] * (1 + [TaxRate] / 100)", stored: false);
-        });
+        // LineTotal is calculated in the service layer
     }
 }
 
