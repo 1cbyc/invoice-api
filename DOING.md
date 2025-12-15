@@ -14,3 +14,16 @@ Data: InvoiceDbContext with Entity Framework Core and SQLite
 Services: IInvoiceService and InvoiceService with business logic
 Controllers: InvoicesController with REST endpoints
 Middleware: Error handling middleware
+
+invoice-api/
+├── Controllers/
+├── Data/
+├── DTOs/
+├── Middleware/
+├── Models/
+├── Properties/
+├── Services/
+├── InvoiceApi.csproj
+├── InvoiceApi.slnx
+├
+
