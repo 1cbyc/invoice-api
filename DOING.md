@@ -2,7 +2,7 @@
 
 | HTTP Verb | Route                                         | Description                                 |
 |-----------|-----------------------------------------------|---------------------------------------------|
-| GET       | /api/invoices                                 | Get all invoices                            |
+| GET       | /api/invoices                                 | Get/List all invoices                            |
 | GET       | /api/invoices/{id}                            | Get invoice by ID                           |
 | POST      | /api/invoices                                 | Create a new invoice                        |
 | PUT       | /api/invoices/{id}                            | Update an invoice                           |
