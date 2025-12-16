@@ -35,7 +35,7 @@
 - **Middleware:**  
   Custom error handling middleware for centralized exception management.
 
-invoice-api/
+<!-- invoice-api/
 ├── Controllers/
 ├── Data/
 ├── DTOs/
@@ -45,8 +45,8 @@ invoice-api/
 ├── Services/
 ├── InvoiceApi.csproj
 ├── InvoiceApi.slnx
-├
-
+├ -->
+<!-- 
 invoice-api/
 ├── Controllers/           InvoicesController.cs
 ├── Data/                  InvoiceDbContext.cs
@@ -60,9 +60,9 @@ invoice-api/
 ├── appsettings.json       (PostgreSQL connection string)
 ├── Dockerfile             (Containerization)
 ├── fly.toml               (Fly.io deployment configuration)
-└── 
+└──  -->
 
-Access Points
+## Access Points
 
 - **Swagger UI (API documentation):**
     - [http://localhost:5123](http://localhost:5123)
