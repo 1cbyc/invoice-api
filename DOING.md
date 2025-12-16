@@ -74,3 +74,12 @@ Access Points
         - `GET /api/invoices` &ndash; Get all invoices
         - `POST /api/invoices` &ndash; Create invoice
         - `GET /api/invoices/1` &ndash; Get invoice by ID
+
+
+**Deployed API Access**
+
+- **Swagger UI (API docs):**
+  - https://invoice-api-thrumming-violet-5839.fly.dev/
+
+- **API Base Endpoint:**
+  - https://invoice-api-thrumming-violet-5839.fly.dev/api/invoices
